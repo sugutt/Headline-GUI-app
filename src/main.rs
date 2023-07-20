@@ -1,25 +1,29 @@
+mod theme;
+
 use std::error::Error;
 
-struct Articles{
-    articles: Vec<Article>
+use colour::{dark_green, yellow};
+use dotenv::dotenv;
+
+use newsapi::{Articles, get_articles};
+
+
+fn render_articles(articles: &Articles){
+    for i in &articles.articles {
+        dark_green!(">{}\n", i.title);
+        yellow!("- {}\n\n", i.url);
+    }
 }
 
-struct Article{
-    title: String,
-    description: String,
-    url: String,
-}
+ fn main() -> Result<(), Box<dyn Error>> {
+     dotenv()?;
+     let api_key= std::env::var("API_KEY")?;
 
-fn get_articles(url: &str) -> Result<Articles, Box<dyn Error>> {
-    let response = ureq::get(url).call()?.into_string()?;
-
-    dbg!(response)
-    todo!()
-}
-
- fn main() {}
-    let url: &str = "https://newsapi.org/v2/top-headlines?country=us&apiKey=cde7cbd805a447c1899a27d8cb493501";
-    let articles: Result<{Unknown},Box<dyn>> = get_articles(url);
+    let url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=";
+     let url= format!("{}{}", url, api_key);
+    let articles = get_articles(&url)?;
+     render_articles(&articles);
+     Ok(())
 }
 
 
