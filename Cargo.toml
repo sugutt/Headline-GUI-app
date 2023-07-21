@@ -2,14 +2,14 @@
 name = "headline"
 version = "0.1.0"
 edition = "2021"
+description = "A simple cli news app"
+[package.metadata.bundle]
+identifier = "https://github.com/sugutt"
+
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-colour = "0.7.0"
-serde ={version =  " 1.0.103", features = ["derive"]}
-serde_json = "1.0.103"
-ureq = "2.1.1"
 newsapi = {path = "./newsapi"}
 dotenv = "0.15.0"
 termimad = "0.23.1"

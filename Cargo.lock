@@ -45,15 +45,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
 
 [[package]]
-name = "colour"
-version = "0.7.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0f58a501d883cdb7f1a780407eefba005458b8fdf7c09213ea0104879bf87aa9"
-dependencies = [
- "crossterm 0.26.1",
-]
-
-[[package]]
 name = "coolor"
 version = "0.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -208,14 +199,10 @@ dependencies = [
 name = "headline"
 version = "0.1.0"
 dependencies = [
- "colour",
  "crossterm 0.26.1",
  "dotenv",
  "newsapi",
- "serde",
- "serde_json",
  "termimad",
- "ureq",
 ]
 
 [[package]]

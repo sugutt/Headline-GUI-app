@@ -2,16 +2,18 @@ mod theme;
 
 use std::error::Error;
 
-use colour::{dark_green, yellow};
 use dotenv::dotenv;
 
 use newsapi::{Articles, get_articles};
 
 
 fn render_articles(articles: &Articles){
+    let theme = theme::default();
+    theme.print_text("# Top Headlines\n\n");
     for i in &articles.articles {
-        dark_green!(">{}\n", i.title);
-        yellow!("- {}\n\n", i.url);
+        theme.print_text(&format!("'{}'", i.title));
+         theme.print_text(&format!(">*{}*'", i.url));
+        theme.print_text("---");
     }
 }
 
